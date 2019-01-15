@@ -1,16 +1,14 @@
 # !/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
-#
 # 1) insert,delete and random access of array.
 # 2) assumes int for element data type.
 
 __author__ = 'Leo'
 
-
 class Array:
 	"""
-	define a array class.
+	Define Array class.
 	"""
 
 	def __init__(self, capacity):
@@ -20,7 +18,6 @@ class Array:
 		参数：
 			capacity：数组的大小。
 		'''
-
 		self.__data = []
 		self.__capacity = capacity
 
@@ -28,7 +25,6 @@ class Array:
 		'''
 		获取数组的长度。
 		'''
-
 		return self.__capacity
 
 	def find(self, index):
@@ -37,11 +33,9 @@ class Array:
 
 		参数：
 			index：索引值。
-
 		返回：
 			如果索引值越界，则返回False，否则返回找到的数据。
 		'''
-
 		if index >= self.__capacity:
 			return False
 		else:
@@ -53,11 +47,9 @@ class Array:
 
 		参数：
 			index：索引值。
-
 		返回：
 			如果索引值越界，则返回False，否则就删除数据并返回True。
 		'''
-
 		if index >= self.__capacity:
 			return False
 		else:
@@ -75,7 +67,6 @@ class Array:
 		返回：
 			如果索引值越界，则返回False，否则插入数据并返回True。
 		'''
-
 		if index >= self.__capacity:
 			return False
 		else:
@@ -86,7 +77,6 @@ class Array:
 		'''
 		打印数组中的所有数据。
 		'''
-
 		for item in self.__data:
 			print(item)
 
