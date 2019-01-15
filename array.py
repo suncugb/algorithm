@@ -63,7 +63,6 @@ class Array:
 		参数：
 			index：插入位置。
 			value：数据。
-
 		返回：
 			如果索引值越界，则返回False，否则插入数据并返回True。
 		'''
