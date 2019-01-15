@@ -18,7 +18,7 @@ class Array:
 		数组类初始化。
 
 		参数：
-		capacity：数组的大小。
+			capacity：数组的大小。
 		'''
 
 		self.__data = []
@@ -52,10 +52,10 @@ class Array:
 		根据索引查找数据。
 
 		参数：
-		index：索引值。
+			index：索引值。
 
 		返回：
-		如果索引值越界，则返回False，否则返回找到的数据。
+			如果索引值越界，则返回False，否则返回找到的数据。
 		'''
 
 		if index >= self.__capacity:
@@ -68,10 +68,10 @@ class Array:
 		根据索引值删除数据。
 
 		参数：
-		index：索引值。
+			index：索引值。
 
 		返回：
-		如果索引值越界，则返回False，否则就删除数据并返回True。
+			如果索引值越界，则返回False，否则就删除数据并返回True。
 		'''
 
 		if index >= self.__capacity:
@@ -85,11 +85,11 @@ class Array:
 		在数组中插入数据。
 
 		参数：
-		index：插入位置。
-		value：数据。
+			index：插入位置。
+			value：数据。
 
 		返回：
-		如果索引值越界，则返回False，否则插入数据并返回True。
+			如果索引值越界，则返回False，否则插入数据并返回True。
 		'''
 
 		if index >= self.__capacity:
