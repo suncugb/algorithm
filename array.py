@@ -24,22 +24,6 @@ class Array:
 		self.__data = []
 		self.__capacity = capacity
 
-	# def __getitem__(self, positon):
-	# 	return self.__data[positon]
-
-	# def __setitem__(self, index, value):
-	# 	if index > self.__capacity -1:
-	# 		return None
-	# 	else:
-	# 		self.__data[index] = value
-
-	# def __len__(self):	
-	# 	return len(self.__data)
-
-	# def __iter__(self):
-	# 	for item in self.__data:
-	# 		yield item
-
 	def length(self):
 		'''
 		获取数组的长度。
