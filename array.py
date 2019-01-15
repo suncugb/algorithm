@@ -19,7 +19,10 @@ class Array:
 			capacity：数组的大小。
 		'''
 		self.__data = []
-		self.__capacity = capacity
+		if isinstance(capacity,int):
+			self.__capacity = capacity
+		else:
+			print('Type Error!')
 
 	def length(self):
 		'''
@@ -36,10 +39,13 @@ class Array:
 		返回：
 			如果索引值越界，则返回False，否则返回找到的数据。
 		'''
-		if index >= self.__capacity:
-			return False
+		if isinstance(index,int):
+			if index >= self.__capacity:
+				return False
+			else:
+				return self.__data[index+1]
 		else:
-			return self.__data[index+1]
+			print('Type Error!')
 		
 	def delete(self, index):
 		'''
@@ -50,11 +56,14 @@ class Array:
 		返回：
 			如果索引值越界，则返回False，否则就删除数据并返回True。
 		'''
-		if index >= self.__capacity:
-			return False
+		if isinstance(index,int):
+			if index >= self.__capacity:
+				return False
+			else:
+				self.__data.pop(index)
+				return True
 		else:
-			self.__data.pop(index)
-			return True
+			print('Type Error!')
 		
 	def insert(self, index, value):
 		'''
@@ -66,11 +75,14 @@ class Array:
 		返回：
 			如果索引值越界，则返回False，否则插入数据并返回True。
 		'''
-		if index >= self.__capacity:
-			return False
+		if isinstance(index,int) and isinstance(value,int):
+			if index >= self.__capacity:
+				return False
+			else:
+				self.__data.insert(index, value)
+				return True
 		else:
-			self.__data.insert(index, value)
-			return True
+			print('Type Error!')
 
 	def print_all(self):
 		'''
@@ -81,16 +93,16 @@ class Array:
 
 def test():
 	array = Array(5)
-	array.insert(0, 3)
+	array.insert(0, 'leo')
 	# array.insert(0, 99)
 	array.insert(1, 4)
 	array.insert(2, 5)
  	array.insert(3, 9)
 	array.insert(4, 10)
-	assert array.insert(0, 100) is True
-	assert array.length() == 5
-	assert array.find(1) == 4
-	assert array.delete(4) is True
+	# assert array.insert(0, 100) is True
+	# assert array.length() == 5
+	# assert array.find(1) == 4
+	# assert array.delete(4) is True
 	array.print_all()
 
 if __name__ == '__main__':
