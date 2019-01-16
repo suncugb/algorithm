@@ -40,7 +40,7 @@ class Array:
 			如果索引值越界，则返回False，否则返回找到的数据。
 		'''
 		if isinstance(index,int):
-			if index >= self.__capacity:
+			if index >= self.__capacity or index < 0:
 				return False
 			else:
 				return self.__data[index+1]
