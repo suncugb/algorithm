@@ -1,8 +1,16 @@
 # !/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-__author__ = 'Leo'
+# 1.创建节点：create_node。
+# 2.链表插入：insert_to_head、insert_after、insert_before。
+# 3.链表删除：delete_by_node、delete_by_value、delete_last_N_node。
+# 4.链表查找：find_by_value、find_by_index、find_middle_node。
+# 5.链表反转：reversed_self。
+# 6.环的检测：has_ring。
+#
+# Author:Leo
 
+from __future__ import print_function
 
 class Node(object):
 	"""
@@ -62,6 +70,24 @@ class SinglyLinkedList(object):
 		'''
 		self.__head = None
 
+	def get_head(self):
+		'''
+		获取链表head节点。
+
+		返回：
+			head节点。
+		'''
+		return self.__head
+
+	def set_head(self,node):
+		'''
+		设置指定node为链表的head节点。
+
+		参数：
+			node：指定节点。
+		'''
+		self.__head = node
+
 	def insert_to_head(self, value):
 		'''
 		在链表的头部插入一个存储value数据的Node节点。
@@ -81,11 +107,11 @@ class SinglyLinkedList(object):
 			node：指定的Node节点。
 			value：将要存储在新节点中的数据。
 		'''
-		# 当节点为空或头节点为空时直接返回
+		#当节点为空或头节点为空时直接返回
 		if node == None or self.__head == None: 
 			return
 
-		# 当指定的Node节点为头节点且头节点不为空时，直接插入在头节点前
+		#当指定的Node节点为头节点且头节点不为空时，直接插入在头节点前
 		if node == self.__head:
 			self.insert_to_head(value)
 			return
@@ -111,7 +137,7 @@ class SinglyLinkedList(object):
 			node：指定的Node节点。
 			value：将要存储在新节点中的数据。
 		'''
-		# 节点为空直接返回
+		#节点为空直接返回
 		if node == None:
 			return
 
@@ -129,11 +155,11 @@ class SinglyLinkedList(object):
 			True，成功。
 			False，失败。
 		'''
-		# 节点为空则直接返回
+		#节点为空则直接返回
 		if node == None:
 			return False
 
-		# 当删除的Node节点是头节点
+		#当删除的Node节点是头节点
 		if node == self.__head:
 			self.__head = node.next
 			return True
@@ -161,11 +187,11 @@ class SinglyLinkedList(object):
 			True，成功。
 			False，失败。
 		'''
-		# 当头节点为空时直接返回
+		#当头节点为空时直接返回
 		if self.__head == None:
 			return False
 
-		# 当删除的节点为头节点时
+		#当删除的节点为头节点时
 		if self.__head.data == value:
 			self.__head = self.__head.next
 			return True
@@ -204,10 +230,11 @@ class SinglyLinkedList(object):
 			return False
 		
 		step = 0
-		while step <= n:
+		while step < n:
 			fast = fast.next
 			step += 1
 
+		current = slow
 		while fast.next != None:
 			current = slow
 			fast = fast.next
@@ -230,7 +257,7 @@ class SinglyLinkedList(object):
 		if node == None:
 			return None
 
-		while node.next != None:
+		while node:
 			if node.data == value:
 				return node
 			else:
@@ -254,7 +281,7 @@ class SinglyLinkedList(object):
 		if node == None:
 			return None
 
-		while node.next != None:
+		while node:
 			if pos == index:
 				return node
 			else:
@@ -279,7 +306,7 @@ class SinglyLinkedList(object):
 		if fast == None or slow == None:
 			return None
 
-		while fast.next != None:
+		while fast.next:
 			fast = fast.next.next
 			slow = slow.next
 
@@ -313,17 +340,105 @@ class SinglyLinkedList(object):
 		if fast == None or slow == None:
 			return False
 
-		while fast.next != None:
+		while fast and fast.next:
+			fast = fast.next.next
+			slow = slow.next
 			if fast == slow:
 				return True
-			else:
-				fast = fast.next.next
-				slow = slow.next
 
 		return False
 	
-	def reversed_self(self):
+	def reversed(self):
 		'''
-		链表反转
+		链表反转：非递归方式。
+		'''
+		#当为链表为空或只有一个head节点时，无需反转（即链表至少有2个以上节点才需要反转）
+		if self.__head == None or self.__head.next == None:
+			return
+
+		pre = self.__head			 
+		cur = self.__head.next 		 
+		temp = self.__head.next.next 
+		while cur != None:
+			temp = cur.next #保存当前节点的下一个节点位置
+			cur.next = pre 	#反转，将当前节点指向前一个节点
+			pre = cur 		#指针后移，将前一个节点位置向后移动到当前节点位置
+			cur = temp 		#指针后移，将当前节点位置向后移动到其下一个节点位置
+
+		self.__head.next = None #将原链表的head节点指向NULL
+		self.__head = pre 		#更新反转后新链表的head节点
+		return
+
+	def reversed2(self):
+		'''
+		链表反转：递归方式
 		'''
 		pass
+
+	def print_all(self):
+		'''
+		打印当前链表的所有节点数据。
+		'''
+		node = self.__head
+		if node == None:
+			print('当前链表没有数据！')
+			return 
+
+		while node != None:
+			print(str(node.data) + '->',end='')
+			node = node.next
+		print('\n')
+
+if __name__ == '__main__':
+	l = SinglyLinkedList()
+
+	#test create node
+	node = l.create_node('abc')
+	l.set_head(node)
+
+	#test insert_to_head operation
+	l.insert_to_head(4)
+	l.insert_to_head('leo')
+	l.insert_to_head('001')
+	l.insert_to_head('xxxx')
+	l.print_all()
+
+	#test insert_before operation
+	l.insert_before(node,88)
+	l.print_all()
+
+	#test insert_after operation
+	l.insert_after(node,'hello')
+	l.print_all()
+
+	#test find operation
+	node = l.find_by_value('001')
+	print(node.data)
+
+	node = l.find_by_index(2)
+	print(node.data)
+
+	node = l.find_middle_node()
+	print(node.data)
+
+	#test delete operation
+	l.delete_by_value(88)
+	l.print_all()
+
+	l.delete_by_node(node)
+	l.print_all()
+
+	l.delete_last_N_node(3)
+	l.print_all()
+
+	#test reversed
+	l.reversed()
+	l.print_all()
+
+	#test has_ring
+	print(l.has_ring()) #has no ring
+
+	node1 = l.find_by_value('xxxx')
+	node2 = l.find_by_value('abc')
+	node1.next = node2  #has a ring
+	print(l.has_ring())
