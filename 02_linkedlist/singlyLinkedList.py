@@ -14,12 +14,11 @@ from __future__ import print_function
 
 class Node(object):
 	"""
-	定义链表的Node节点。
+	定义单链表的Node节点。
 	"""
-
 	def __init__(self, data, next=None):
 		'''
-		Node节点的初始化方法。
+		Node节点的初始化。
 
 		参数：
 			data：存储数据。
@@ -95,6 +94,9 @@ class SinglyLinkedList(object):
 		参数：
 			value：将要存储的数据。
 		'''
+		if self.__head == None:
+			return
+
 		node = Node(value)
 		node.next = self.__head
 		self.__head = node
@@ -152,8 +154,7 @@ class SinglyLinkedList(object):
 		参数：
 			node：要删除的Node节点。
 		返回：
-			True，成功。
-			False，失败。
+			True或False。
 		'''
 		#节点为空则直接返回
 		if node == None:
@@ -184,8 +185,7 @@ class SinglyLinkedList(object):
 		参数：
 			value：指定的存储数据。
 		返回：
-			True，成功。
-			False，失败。
+			True或False。
 		'''
 		#当头节点为空时直接返回
 		if self.__head == None:
@@ -220,9 +220,8 @@ class SinglyLinkedList(object):
 		
 		参数：
 			n：需要删除的倒数第N个序数。
-		参数：
-			True，成功。
-			False，失败。
+		返回：
+			True或False。
 		'''
 		fast = self.__head
 		slow = self.__head
@@ -356,18 +355,17 @@ class SinglyLinkedList(object):
 		if self.__head == None or self.__head.next == None:
 			return
 
-		pre = self.__head			 
+		prev = self.__head			 
 		cur = self.__head.next 		 
 		temp = self.__head.next.next 
-		while cur != None:
+		while cur:
 			temp = cur.next #保存当前节点的下一个节点位置
-			cur.next = pre 	#反转，将当前节点指向前一个节点
-			pre = cur 		#指针后移，将前一个节点位置向后移动到当前节点位置
+			cur.next = prev #反转，将当前节点指向前一个节点
+			prev = cur 		#指针后移，将前一个节点位置向后移动到当前节点位置
 			cur = temp 		#指针后移，将当前节点位置向后移动到其下一个节点位置
 
 		self.__head.next = None #将原链表的head节点指向NULL
-		self.__head = pre 		#更新反转后新链表的head节点
-		return
+		self.__head = prev 		#更新反转后新链表的head节点
 
 	def reversed2(self):
 		'''
@@ -384,7 +382,7 @@ class SinglyLinkedList(object):
 			print('当前链表没有数据！')
 			return 
 
-		while node != None:
+		while node:
 			print(str(node.data) + '->',end='')
 			node = node.next
 		print('\n')
