@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 # 基于单链表的LRU缓存淘汰策略实现。 
-# LRU：Least Recently Used。
+# 最近最少使用策略LRU：Least Recently Used。
 # 思路：
 # 每当访问一个新数据时，遍历链表：
 # 1.如果链表已经存在该数据，则删除原节点，并将包含新数据的节点插入到表头。
@@ -86,7 +86,7 @@ class LRU(object):
 		返回：
 			True或False。
 		'''
-		if self.__len() + 1 < self.__maxCacheSize:
+		if self.__len() + 1 <= self.__maxCacheSize:
 			return False
 		else:
 			return True
@@ -148,7 +148,7 @@ if __name__ == '__main__':
 	lru_cache.update('xxxx')
 	lru_cache.print_all()
 
-	lru_cache.update(88)
+	lru_cache.update(4)
 	lru_cache.print_all()
 
 	lru_cache.update('start')
