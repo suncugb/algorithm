@@ -299,7 +299,7 @@ class DoublyLinkedList(object):
 		if fast == None or slow == None:
 			return None
 
-		while fast.next:
+		while fast and fast.next:
 			fast = fast.next.next
 			slow = slow.next
 
