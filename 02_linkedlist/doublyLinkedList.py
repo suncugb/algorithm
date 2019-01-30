@@ -385,5 +385,3 @@ if __name__ == '__main__':
 	#test reversed
 	l.reversed()
 	l.print_all()
-
-	
