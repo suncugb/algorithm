@@ -230,6 +230,7 @@ class DoubleCircularLinkedList(object):
 			fast = fast.next.next
 			slow = slow.next
 
+		#重新建立头和尾节点的关系
 		head.prev = tail
 		tail.next = head
 		return slow
@@ -271,6 +272,7 @@ class DoubleCircularLinkedList(object):
 			prev = cur
 			cur = temp
 
+		#重新建立头和尾节点的关系
 		self.__head.next = prev
 		prev.prev = self.__head
 		self.__head = prev
