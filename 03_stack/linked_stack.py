@@ -62,6 +62,13 @@ class LinkedStack(object):
 		self.__size = size 		#栈元素的总个数。
 		self.__head = None 		#链表头节点。
 
+	@property
+	def head(self):
+		'''
+		获取头节点。
+		'''
+		return self.__head
+
 	def push(self, data):
 		'''
 		入栈操作。
@@ -82,7 +89,6 @@ class LinkedStack(object):
 			self.__head = new_node 		#更新头节点
 		
 		self.__count += 1 				#栈元素个数加1
-
 		return True
 
 	def pop(self):
@@ -102,6 +108,22 @@ class LinkedStack(object):
 		self.__count -= 1 				#栈元素个数减1
 
 		return target
+
+	def clear(self):
+		'''
+		清空链表。
+		'''
+		prev = self.__head
+		cur = self.__head
+		temp = None
+		while cur:
+			temp = cur.next
+			prev = cur
+			prev.next = None
+			prev.data = None
+			cur = temp
+
+		self.__head = None
 
 	def print_all(self):
 		'''
