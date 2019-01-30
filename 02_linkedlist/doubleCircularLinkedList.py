@@ -3,7 +3,7 @@
 
 # 双向循环链表。
 # 头插、尾插、中间插、按值查找、按索引查找、查找中间节点、按节点删除、反转。
-#Author：Leo
+# Author：Leo
 
 from __future__ import print_function
 
@@ -119,8 +119,6 @@ class DoubleCircularLinkedList(object):
 			self.__head.prev.next = node
 			self.__head.prev = node
 			self.__head = node 
-		
-		# print(self.__head.data)
 
 	def append(self, data):
 		'''
@@ -300,7 +298,6 @@ if __name__ == '__main__':
 	l = DoubleCircularLinkedList()
 
 	#test add 
-	# l.add('start')
 	l.add('I')
 	l.add('am')
 	l.add('a')	
@@ -337,7 +334,3 @@ if __name__ == '__main__':
 	#test reversed
 	l.reversed()
 	l.print_all()
-
-
-
-
