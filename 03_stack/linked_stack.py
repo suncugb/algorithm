@@ -121,26 +121,11 @@ if __name__ == '__main__':
 	ls.push('am')
 	ls.push('a')
 	ls.push('student')
+	ls.push(4)
+	ls.push(90)
 	ls.print_all()
 
 	#test pop
-	ls.push(4)
-	ls.print_all()
-
-	ls.pop()
-	ls.print_all()
-
-	ls.pop()
-	ls.print_all()
-
-	ls.pop()
-	ls.print_all()
-
-	ls.pop()
-	ls.print_all()
-
-	ls.pop()
-	ls.print_all()
-
-	ls.pop()
-	ls.print_all()
+	for i in range(0,6):
+		ls.pop()
+		ls.print_all()
