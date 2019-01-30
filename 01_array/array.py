@@ -43,7 +43,7 @@ class Array:
 			if index >= self.__capacity or index < 0:
 				return False
 			else:
-				return self.__data[index+1]
+				return self.__data[index]
 		else:
 			print('Type Error!')
 		
