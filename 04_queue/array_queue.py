@@ -48,10 +48,10 @@ class ArrayQueue(object):
 		'''
 		出队。
 		'''
-		if self.__head == self.__tail:
+		if self.__head == self.__tail:		#队列为空，则返回None
 			return
 
-		item = self.__items[self.__head]
+		item = self.__items[self.__head] 	#队列不为空，则返回item
 		self.__head += 1
 		return item
 			
