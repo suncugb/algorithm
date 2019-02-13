@@ -233,13 +233,17 @@ class SinglyLinkedList(object):
 			fast = fast.next
 			step += 1
 
-		current = slow
+		cur = slow
 		while fast.next != None:
-			current = slow
+			cur = slow
 			fast = fast.next
 			slow = slow.next
 
-		current.next = slow.next
+		if cur == self.__head: 		#倒数第N个节点正好是头节点时要特殊处理	
+			self.__head = cur.next 	#更新头节点
+		else:
+			cur.next = slow.next
+
 		return True
 
 	def find_by_value(self, value):
